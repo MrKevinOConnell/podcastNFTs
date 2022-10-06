@@ -3,13 +3,9 @@ const { ethers } = require("hardhat");
 
 describe("Greeter", function () {
   it("Should return the new greeting once it's changed", async function () {
-    const Greeter = await ethers.getContractFactory("Greeter");
-    const greeter = await Greeter.deploy("Hello, world!");
+    const Greeter = await ethers.getContractFactory("Podcast");
+    const greeter = await Greeter.deploy("Podcast EP","POD","https://gateway.pinata.cloud/ipfs/QmaaKVbdQCQ6RogBDdxSexQfJuYrxL9NGrg4AUh9jgmAZT/",100,2,0xEdd3783e8c7c52b80cfBD026a63C207Edc9CbeE7);
     await greeter.deployed();
-
-    expect(await greeter.greet()).to.equal("Hello, world!");
-
-    const setGreetingTx = await greeter.setGreeting("Hola, mundo!");
 
     // wait until the transaction is mined
     await setGreetingTx.wait();
